@@ -1,19 +1,23 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{25E66AC1-B2FF-4CF1-CDA1-FD44269A1F13}") = "KineticAstroMiner", "Assembly-CSharp.csproj", "{AE4DD2BF-7F5C-4E6E-8D31-DD87E605DAE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{AE4DD2BF-7F5C-4E6E-8D31-DD87E605DAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4DD2BF-7F5C-4E6E-8D31-DD87E605DAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4DD2BF-7F5C-4E6E-8D31-DD87E605DAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4DD2BF-7F5C-4E6E-8D31-DD87E605DAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-				GlobalSection(MonoDevelopProperties) = preSolution
+												GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
