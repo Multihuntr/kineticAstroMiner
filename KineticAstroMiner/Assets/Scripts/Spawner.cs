@@ -38,7 +38,8 @@ public class Spawner : MonoBehaviour
 	private void spawnObject ()
 	{
 		float angle = UnityEngine.Random.value * Mathf.PI * 2;
-		Vector2 pos = 18 * new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
+		Vector2 cameraPos = Camera.main.transform.position;
+		Vector2 pos = cameraPos + 18 * new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
 		GameObject spawned = Instantiate (toSpawn, pos, Quaternion.identity) as GameObject;
 		spawned.SendMessage ("startRandom");
 	}

@@ -12,14 +12,20 @@ public class Asteroid : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D> ();
 		Vector2 twoDPos = gameObject.transform.position;
-		float forceFactor = UnityEngine.Random.value * 10 + 10;
+		float forceFactor = UnityEngine.Random.value * 5 + 5;
 		rb.AddForce (forceFactor * (aimAt - twoDPos));
+		float rotationFactor = UnityEngine.Random.value * 41 - 21;
+		rb.AddTorque (rotationFactor);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
+		Vector2 camDist = Camera.main.transform.position;
+		Vector2 thisDist = gameObject.transform.position;
+		if ((thisDist - camDist).sqrMagnitude > 400) {
+			Destroy (gameObject);
+		}
 	}
 
 	void startRandom ()
