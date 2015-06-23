@@ -1,0 +1,15 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+# Standard to msysgit
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
+
+# Unity files are text files!
+*.unity  diff=astextplain
+*.prefab  diff=astextplain
+*.meta  diff=astestplain
+*.asset  diff=astextplain

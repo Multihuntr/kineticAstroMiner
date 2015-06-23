@@ -1,0 +1,33 @@
+=============== 
+Unity generated
+===============
+KineticAstroMiner/Temp/
+KineticAstroMiner/Library/
+
+=====================================
+Visual Studio / MonoDevelop generated
+=====================================
+KineticAstroMiner/ExportedObj/
+KineticAstroMiner/obj/
+*.svd
+*.userprefs
+KineticAstroMiner/*.csproj
+*.pidb
+*.suo
+KineticAstroMiner/*.sln
+*.user
+*.unityproj
+*.booproj
+
+============
+OS generated
+============
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
