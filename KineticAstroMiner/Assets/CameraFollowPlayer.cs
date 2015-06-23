@@ -21,7 +21,7 @@ public class CameraFollowPlayer : MonoBehaviour
 	{
 		Rigidbody2D rigbody = target.GetComponent<Rigidbody2D> ();
 		Vector2 velocity = rigbody.velocity;
-		Camera.main.orthographicSize = Mathf.Lerp (10, 20, Mathf.InverseLerp (0, 20, rigbody.velocity.magnitude));
+		Camera.main.orthographicSize = Mathf.Lerp (5, 20, Mathf.InverseLerp (0, 20, rigbody.velocity.magnitude));
 		gameObject.transform.position = new Vector3 (target.transform.position.x + xOffset,
 		                                      target.transform.position.y + yOffset, gameObject.transform.position.z);
 	}
