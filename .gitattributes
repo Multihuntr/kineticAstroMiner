@@ -9,7 +9,7 @@
 *.RTF	 diff=astextplain
 
 # Unity files are text files!
-*.unity  diff=astextplain
-*.prefab  diff=astextplain
-*.meta  diff=astestplain
-*.asset  diff=astextplain
+*.unity  text
+*.prefab  text
+*.meta  text
+*.asset  text

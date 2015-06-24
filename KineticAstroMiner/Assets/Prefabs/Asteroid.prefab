@@ -12,6 +12,7 @@ GameObject:
   - 58: {fileID: 5875442}
   - 50: {fileID: 5042072}
   - 114: {fileID: 11462380}
+  - 114: {fileID: 11473502}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -70,6 +71,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459a44fcb8cde334580b02283da7bc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPush: 10
+  maxPush: 20
+  minRot: -20
+  maxRot: 20
+--- !u!114 &11473502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d5bb49b2c242f4ebcc19f910341314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionThreshold: 40
 --- !u!212 &21263916
 SpriteRenderer:
   m_ObjectHideFlags: 1
