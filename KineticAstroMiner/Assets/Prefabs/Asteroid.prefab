@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459a44fcb8cde334580b02283da7bc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPush: 10
-  maxPush: 20
+  minPush: 7
+  maxPush: 15
   minRot: -20
   maxRot: 20
 --- !u!114 &11473502
