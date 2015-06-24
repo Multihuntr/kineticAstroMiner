@@ -40,6 +40,9 @@ public class ShootingMode : MonoBehaviour
 			}
 		}
 #else
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			toggleActivate ();
+		}
 		if (Active) {
 			Vector2 aimAt = Input.mousePosition;
 			instantlyFacePoint (Camera.main.ScreenToWorldPoint (aimAt));
@@ -65,7 +68,11 @@ public class ShootingMode : MonoBehaviour
 
 	void OnMouseDown ()
 	{
+		toggleActivate ();
+	}
 
+	void toggleActivate ()
+	{
 		if (Active) {
 			deactivate ();
 		} else {
