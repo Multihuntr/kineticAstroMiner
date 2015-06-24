@@ -9,10 +9,12 @@ public class ShootingMode : MonoBehaviour
 	private bool Active = false;
 	private float TimeScaleTarget = 1;
 	private Rigidbody2D rb;
-	
+
+#if UNITY_IOS || UNITY_ANDROID
 	// Selects the 8th layer (player)
 	private int playerMask = 1 << 8;
-	
+#endif
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D> ();
