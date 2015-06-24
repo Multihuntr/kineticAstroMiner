@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Asteroid : MonoBehaviour
 {
+	public float minPush;
+	public float maxPush;
+	public float minRot;
+	public float maxRot;
 
 	Rigidbody2D rb;
 	Vector2 aimAt;
@@ -16,9 +20,9 @@ public class Asteroid : MonoBehaviour
 
 		// Apply a random force and rotation, and let it free.
 		Vector2 twoDPos = gameObject.transform.position;
-		float forceFactor = UnityEngine.Random.value * 5 + 5;
+		float forceFactor = UnityEngine.Random.Range (minPush, maxPush);
 		rb.AddForce (forceFactor * (aimAt - twoDPos));
-		float rotationFactor = UnityEngine.Random.value * 41 - 21;
+		float rotationFactor = UnityEngine.Random.Range (minRot, maxRot);
 		rb.AddTorque (rotationFactor);
 	}
 
