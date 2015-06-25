@@ -126,6 +126,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11484782, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+      propertyPath: spawnTimeMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484782, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+      propertyPath: spawnTimeMax
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
   m_IsPrefabParent: 0
@@ -174,7 +182,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_FixedAngle: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
 --- !u!212 &1613912784
@@ -237,11 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1915d8fc680b3a641bc8c5a2a7e85ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1800
-  maxspeed: 25
-  minspeed: 1
-  decelarationDistance: .200000003
-  PlayerVelocity: {x: 0, y: 0}
+  maxSpd: 12
+  snapdistance: .0199999996
+  driftSpd: 1
 --- !u!1 &1969249388
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,5 +405,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1613912781}
-  xOffset: 0
-  yOffset: 0
+  minZoom: 5
+  maxZoom: 12
