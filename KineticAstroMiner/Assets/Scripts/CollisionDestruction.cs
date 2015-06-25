@@ -13,7 +13,7 @@ public class CollisionDestruction : MonoBehaviour
 		if (other.relativeVelocity.sqrMagnitude > destructionThreshold) {
 			//Instantiate (destructionAnimation, transform.position, Quaternion.identity);
 			//Instantiate (resource, transform.position, Quaternion.identity);
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 	}
 }
