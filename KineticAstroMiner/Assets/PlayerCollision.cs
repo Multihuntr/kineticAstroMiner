@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerCollision : MonoBehaviour
 {
-
+	public static LinkedList<GameObject> Cargo;
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
@@ -13,12 +13,13 @@ public class PlayerCollision : MonoBehaviour
 		Debug.Log (angle);
 		if (angle > 0 && angle < 20) {
 			Destroy (other.gameObject);
+			Cargo.AddLast (other.gameObject);
 		}
 	}
 	// Use this for initialization
 	void Start ()
 	{
-	
+		Cargo = new LinkedList<GameObject> ();
 	}
 	
 	// Update is called once per frame
