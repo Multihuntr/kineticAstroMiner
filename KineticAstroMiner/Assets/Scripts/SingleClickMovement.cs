@@ -3,39 +3,56 @@ using System.Collections;
 
 public class SingleClickMovement : MonoBehaviour
 {
-	public float maxSpd;
-	public float snapdistance;
-	public float driftSpd;
+	public float LinSpd;
+	public float DecelerationProximityThresholdFactor;
+
+	public float RotSpd;
+	public float RotSlow;
+
 
 	private bool launching;
 	private Rigidbody2D rigBody;
 	private Vector2 TargetPosition;
-	private Vector2 OriginalDirection;
+	private float ProximityThreshold;
 
 	//stuff that isnt variables starts here
 	void movement (Vector2 CurrentPosition)
 	{
 		Vector2 dist = (TargetPosition - CurrentPosition);
-		transform.eulerAngles = new Vector3 (0, 0, Mathf.Atan2 ((TargetPosition.y - transform.position.y), (TargetPosition.x - transform.position.x)) * Mathf.Rad2Deg - 90);
-
-		// If the distance to the object is within range to snap to it, then do so, else modify the speed vector
-		if (dist.sqrMagnitude < snapdistance * snapdistance) {
+		if (dist.sqrMagnitude < ProximityThreshold) {
 			launching = false;
-			transform.position = TargetPosition; //SNAP!
-			rigBody.velocity = OriginalDirection.normalized * driftSpd; //Drift
-			rigBody.angularVelocity = 0;
-		} else {
-			// http://www.wolframalpha.com/input/?i=20-1%2F%28x%2B1%2F%2820-1%29+-+0.1%29+%2B+1%2F%28x-1%2F%2820-1%29+-+5%29
-			float to = dist.magnitude; 					// x
-			// maxSpd									// '20'
-			float orig = OriginalDirection.magnitude;	// '5'
-			// snapdistance 							// '0.1'
-
-			// We wanted roots at snapdistance and orig, but the small value of the other terms were throwing that off
-			//	So I went with an approximation.
-			float newVel = maxSpd - 1 / (to + 1 / (maxSpd - 1) - snapdistance) + 1 / (to - 1 / (maxSpd - 1) - orig);
-			rigBody.velocity = transform.up * newVel;
 		}
+		rigBody.AddForce (transform.up * LinSpd);
+	}
+
+	bool rotation (Vector2 CurrentPosition)
+	{
+		// Get the angles you need
+		float currAng = normaliseAngle (transform.eulerAngles.z);
+		float targetAng = normaliseAngle (Mathf.Atan2 (TargetPosition.y - CurrentPosition.y, TargetPosition.x - CurrentPosition.x) * Mathf.Rad2Deg - 90);
+		// Compare them
+		float dif = targetAng - currAng;
+		float abDif = Mathf.Abs (dif);
+
+		// Is it close enough to what you want?
+		bool closeEnough = abDif < RotSlow;
+		if (!closeEnough) {
+			// Using dif/abDif gives you a +1 or -1 which you multiply by the acceleration variable
+			rigBody.AddTorque (dif / abDif * RotSpd);
+		} else {
+			// Snap it to the rotation you want. Hopefully no one will notice the snap!
+			rigBody.angularVelocity = 0;
+			rigBody.rotation = targetAng;
+			transform.eulerAngles = new Vector3 (0, 0, targetAng);
+		}
+
+		return !closeEnough;
+	}
+
+	float normaliseAngle (float a)
+	{
+		a += 360;
+		return a % 360;
 	}
 
 	// Use this for initialization
@@ -55,10 +72,13 @@ public class SingleClickMovement : MonoBehaviour
 		if ((Input.GetMouseButtonDown (0)) && ((MousePos - CurrentPosition).sqrMagnitude > playerSize * playerSize) && !launching) {
 			launching = true;
 			TargetPosition = MousePos;
-			OriginalDirection = (TargetPosition - CurrentPosition);
+			ProximityThreshold = (TargetPosition - CurrentPosition).sqrMagnitude / DecelerationProximityThresholdFactor;
 		}
-		if (launching) { 
-			movement (CurrentPosition);
+		if (launching) {
+			bool rotating = rotation (CurrentPosition);
+			if (!rotating) {
+				movement (CurrentPosition);
+			}
 		}
 	}
 }
