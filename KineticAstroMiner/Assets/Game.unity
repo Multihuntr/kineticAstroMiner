@@ -180,13 +180,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11484782, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
-      propertyPath: spawnTimeMin
-      value: 100
+    - target: {fileID: 11444886, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11484782, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
       propertyPath: spawnTimeMax
-      value: 200
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
@@ -413,8 +413,8 @@ Camera:
   m_GameObject: {fileID: 1971468320}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: .0451989584, g: .046814207, b: .279411793, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -425,7 +425,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -461,5 +461,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1613912781}
-  minZoom: 5
-  maxZoom: 12
+  minZoom: 10
+  maxZoom: 15

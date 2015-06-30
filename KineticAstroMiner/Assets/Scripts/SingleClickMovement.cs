@@ -16,15 +16,6 @@ public class SingleClickMovement : MonoBehaviour
 	private float ProximityThreshold;
 
 	//stuff that isnt variables starts here
-	void movement (Vector2 CurrentPosition)
-	{
-		Vector2 dist = (TargetPosition - CurrentPosition);
-		if (dist.sqrMagnitude < ProximityThreshold) {
-			launching = false;
-		}
-		rigBody.AddForce (transform.up * LinSpd);
-	}
-
 	bool rotation (Vector2 CurrentPosition)
 	{
 		// Get the angles you need
@@ -66,18 +57,26 @@ public class SingleClickMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		// Check if the player has clicked
 		float playerSize = GetComponent<CircleCollider2D> ().radius;
 		Vector2 CurrentPosition = transform.position;
 		Vector2 MousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		if ((Input.GetMouseButtonDown (0)) && ((MousePos - CurrentPosition).sqrMagnitude > playerSize * playerSize) && !launching) {
 			launching = true;
 			TargetPosition = MousePos;
+			// We assign a distance before the player should slow down
 			ProximityThreshold = (TargetPosition - CurrentPosition).sqrMagnitude / DecelerationProximityThresholdFactor;
 		}
+
+		// Handle movement
 		if (launching) {
+			//First we check if we should be rotating to face the correct position.
 			bool rotating = rotation (CurrentPosition);
 			if (!rotating) {
-				movement (CurrentPosition);
+				// If we are facing the right way, then go forwards!
+				rigBody.AddForce (transform.up * LinSpd);
+				// Then we are considered to be finished launching if the distance is less than the proximity threshold
+				launching = ((TargetPosition - CurrentPosition).sqrMagnitude > ProximityThreshold);
 			}
 		}
 	}

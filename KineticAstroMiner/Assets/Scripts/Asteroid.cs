@@ -15,8 +15,6 @@ public class Asteroid : MonoBehaviour
 	{
 		// Easy reference to the RigidBody
 		rb = GetComponent<Rigidbody2D> ();
-		// Turn interpolation on so that slow-down effects will be smooth
-		rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
 		// Apply a random force and rotation, and let it free.
 		Vector2 twoDPos = gameObject.transform.position;
@@ -36,11 +34,8 @@ public class Asteroid : MonoBehaviour
 		}
 	}
 
-	void startRandom ()
+	void startAimedAt (Vector2 aimAt)
 	{
-		// Pick random point in play area
-		float x = UnityEngine.Random.value;
-		float y = UnityEngine.Random.value;
-		aimAt = Camera.main.ViewportToWorldPoint (new Vector2 (x, y));
+		this.aimAt = aimAt;
 	}
 }
