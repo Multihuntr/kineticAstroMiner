@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1915d8fc680b3a641bc8c5a2a7e85ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinSpd: 60
+  LinSpd: 100
   DecelerationProximityThresholdFactor: 10
   RotSpd: 40000
   RotSlow: 8

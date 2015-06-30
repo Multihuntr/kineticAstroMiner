@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9110f4392cfde4c895c3f82fe19797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinSpd: 20
+  LinSpd: 30
   ProximityThresholdFactor: 4
 --- !u!212 &21237840
 SpriteRenderer:
