@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 		state = State.Launching;
 	}
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		switch (state) {
 		case State.Launching:

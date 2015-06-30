@@ -10,7 +10,10 @@ public class SingleClickMovement : MonoBehaviour
 	public float RotSlow;
 
 
-	private bool launching;
+	public static bool launching;
+
+
+
 	private Rigidbody2D rigBody;
 	private Vector2 TargetPosition;
 	private float ProximityThreshold;
@@ -58,19 +61,22 @@ public class SingleClickMovement : MonoBehaviour
 	void Update ()
 	{
 		// Check if the player has clicked
-		float playerSize = GetComponent<CircleCollider2D> ().radius;
 		Vector2 CurrentPosition = transform.position;
 		Vector2 MousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		if ((Input.GetMouseButtonDown (0)) && ((MousePos - CurrentPosition).sqrMagnitude > playerSize * playerSize) && !launching) {
+		if (Input.GetMouseButtonDown (0) && !launching && !ShootingMode.Active) {
 			launching = true;
 			TargetPosition = MousePos;
 			// We assign a distance before the player should slow down
 			ProximityThreshold = (TargetPosition - CurrentPosition).sqrMagnitude / DecelerationProximityThresholdFactor;
 		}
+	}
 
+	void FixedUpdate ()
+	{
 		// Handle movement
-		if (launching) {
+		if (launching && !ShootingMode.Active) {
 			//First we check if we should be rotating to face the correct position.
+			Vector2 CurrentPosition = transform.position;
 			bool rotating = rotation (CurrentPosition);
 			if (!rotating) {
 				// If we are facing the right way, then go forwards!
