@@ -6,7 +6,7 @@ using System.Linq;
 
 public class ShootingMode : MonoBehaviour
 {
-	private bool Active = false;
+	public static bool Active = false;
 	private float TimeScaleTarget = 1;
 	private Rigidbody2D rb;
 
@@ -66,17 +66,14 @@ public class ShootingMode : MonoBehaviour
 #endif
 
 
-	void OnMouseDown ()
-	{
-		toggleActivate ();
-	}
-
 	void toggleActivate ()
 	{
-		if (Active) {
-			deactivate ();
-		} else {
-			activate ();
+		if (!SingleClickMovement.launching) {
+			if (Active) {
+				deactivate ();
+			} else {
+				activate ();
+			}
 		}
 	}
 
@@ -89,7 +86,7 @@ public class ShootingMode : MonoBehaviour
 	void activate ()
 	{
 		Active = true;
-		TimeScaleTarget = 0;
+		TimeScaleTarget = 0.5f;
 		rb.angularVelocity = 0;
 	}
 

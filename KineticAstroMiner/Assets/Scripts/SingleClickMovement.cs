@@ -3,39 +3,50 @@ using System.Collections;
 
 public class SingleClickMovement : MonoBehaviour
 {
-	public float maxSpd;
-	public float snapdistance;
-	public float driftSpd;
+	public float LinSpd;
+	public float DecelerationProximityThresholdFactor;
 
-	private bool launching;
+	public float RotSpd;
+	public float RotSlow;
+
+
+	public static bool launching;
+
+
+
 	private Rigidbody2D rigBody;
 	private Vector2 TargetPosition;
-	private Vector2 OriginalDirection;
+	private float ProximityThreshold;
 
 	//stuff that isnt variables starts here
-	void movement (Vector2 CurrentPosition)
+	bool rotation (Vector2 CurrentPosition)
 	{
-		Vector2 dist = (TargetPosition - CurrentPosition);
-		transform.eulerAngles = new Vector3 (0, 0, Mathf.Atan2 ((TargetPosition.y - transform.position.y), (TargetPosition.x - transform.position.x)) * Mathf.Rad2Deg - 90);
+		// Get the angles you need
+		float currAng = normaliseAngle (transform.eulerAngles.z);
+		float targetAng = normaliseAngle (Mathf.Atan2 (TargetPosition.y - CurrentPosition.y, TargetPosition.x - CurrentPosition.x) * Mathf.Rad2Deg - 90);
+		// Compare them
+		float dif = targetAng - currAng;
+		float abDif = Mathf.Abs (dif);
 
-		// If the distance to the object is within range to snap to it, then do so, else modify the speed vector
-		if (dist.sqrMagnitude < snapdistance * snapdistance) {
-			launching = false;
-			transform.position = TargetPosition; //SNAP!
-			rigBody.velocity = OriginalDirection.normalized * driftSpd; //Drift
-			rigBody.angularVelocity = 0;
+		// Is it close enough to what you want?
+		bool closeEnough = abDif < RotSlow;
+		if (!closeEnough) {
+			// Using dif/abDif gives you a +1 or -1 which you multiply by the acceleration variable
+			rigBody.AddTorque (dif / abDif * RotSpd);
 		} else {
-			// http://www.wolframalpha.com/input/?i=20-1%2F%28x%2B1%2F%2820-1%29+-+0.1%29+%2B+1%2F%28x-1%2F%2820-1%29+-+5%29
-			float to = dist.magnitude; 					// x
-			// maxSpd									// '20'
-			float orig = OriginalDirection.magnitude;	// '5'
-			// snapdistance 							// '0.1'
-
-			// We wanted roots at snapdistance and orig, but the small value of the other terms were throwing that off
-			//	So I went with an approximation.
-			float newVel = maxSpd - 1 / (to + 1 / (maxSpd - 1) - snapdistance) + 1 / (to - 1 / (maxSpd - 1) - orig);
-			rigBody.velocity = transform.up * newVel;
+			// Snap it to the rotation you want. Hopefully no one will notice the snap!
+			rigBody.angularVelocity = 0;
+			rigBody.rotation = targetAng;
+			transform.eulerAngles = new Vector3 (0, 0, targetAng);
 		}
+
+		return !closeEnough;
+	}
+
+	float normaliseAngle (float a)
+	{
+		a += 360;
+		return a % 360;
 	}
 
 	// Use this for initialization
@@ -49,16 +60,30 @@ public class SingleClickMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		float playerSize = GetComponent<CircleCollider2D> ().radius;
+		// Check if the player has clicked
 		Vector2 CurrentPosition = transform.position;
 		Vector2 MousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		if ((Input.GetMouseButtonDown (0)) && ((MousePos - CurrentPosition).sqrMagnitude > playerSize * playerSize) && !launching) {
+		if (Input.GetMouseButtonDown (0) && !launching && !ShootingMode.Active) {
 			launching = true;
 			TargetPosition = MousePos;
-			OriginalDirection = (TargetPosition - CurrentPosition);
+			// We assign a distance before the player should slow down
+			ProximityThreshold = (TargetPosition - CurrentPosition).sqrMagnitude / DecelerationProximityThresholdFactor;
 		}
-		if (launching) { 
-			movement (CurrentPosition);
+	}
+
+	void FixedUpdate ()
+	{
+		// Handle movement
+		if (launching && !ShootingMode.Active) {
+			//First we check if we should be rotating to face the correct position.
+			Vector2 CurrentPosition = transform.position;
+			bool rotating = rotation (CurrentPosition);
+			if (!rotating) {
+				// If we are facing the right way, then go forwards!
+				rigBody.AddForce (transform.up * LinSpd);
+				// Then we are considered to be finished launching if the distance is less than the proximity threshold
+				launching = ((TargetPosition - CurrentPosition).sqrMagnitude > ProximityThreshold);
+			}
 		}
 	}
 }

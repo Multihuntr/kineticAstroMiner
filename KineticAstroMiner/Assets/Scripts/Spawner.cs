@@ -41,6 +41,12 @@ public class Spawner : MonoBehaviour
 		Vector2 cameraPos = Camera.main.transform.position;
 		Vector2 pos = cameraPos + 18 * new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
 		GameObject spawned = Instantiate (toSpawn, pos, Quaternion.identity) as GameObject;
-		spawned.SendMessage ("startRandom");
+		
+		// Pick random point in play area
+		float x = UnityEngine.Random.value;
+		float y = UnityEngine.Random.value;
+		Vector2 aimAt = Camera.main.ViewportToWorldPoint (new Vector2 (x, y));
+
+		spawned.SendMessage ("startAimedAt", aimAt);
 	}
 }
