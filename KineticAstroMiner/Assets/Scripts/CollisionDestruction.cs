@@ -3,17 +3,18 @@ using System.Collections;
 
 public class CollisionDestruction : MonoBehaviour
 {
-
+	public GameObject explosionspawn;
 	public int destructionThreshold;
-	//public GameObject destructionAnimation;
+	private Vector2 hitspot;
 	//public GameObject resource;
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
-		if (other.relativeVelocity.sqrMagnitude > destructionThreshold) {
-			//Instantiate (destructionAnimation, transform.position, Quaternion.identity);
+		hitspot = other.contacts [0].point;
+		if (other.relativeVelocity.sqrMagnitude > destructionThreshold && other.gameObject.name == "Asteroid(Clone)") {
 			//Instantiate (resource, transform.position, Quaternion.identity);
-			//Destroy (gameObject);
+			Destroy (gameObject);
+			Instantiate (explosionspawn, hitspot, Quaternion.identity);
 		}
 	}
 }

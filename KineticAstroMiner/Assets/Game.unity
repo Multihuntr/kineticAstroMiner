@@ -87,6 +87,27 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &176179644 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 157092, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+  m_PrefabInternal: {fileID: 869692228}
+--- !u!95 &176179646
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176179644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0376cf26b20cf6848a9bb06881680075, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &869692228
 Prefab:
   m_ObjectHideFlags: 0
@@ -223,7 +244,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1613912786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,10 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d6225cef4d10948960522336a953c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minOmNomAngle: 0
-  maxOmNomAngle: 20
-  asteroidCargo: 0
-  enemyFighterCargo: 0
+  explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
+  OmNomAngle: 45
 --- !u!1 &1969249388
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,33 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerCollision : MonoBehaviour
 {
-	public float minOmNomAngle;
-	public float maxOmNomAngle;
-	public float asteroidCargo;
-	public float enemyFighterCargo;
+	public GameObject explosionspawn;
+	public float OmNomAngle;
+	public static LinkedList <GameObject> cargo;
+	private Vector2 hitspot;
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
-		Vector3 targetDir = other.transform.position - gameObject.transform.position;
-		Vector3 forward = transform.up;
-		float angle = Vector3.Angle (targetDir, forward);
-		if (angle > minOmNomAngle && angle < maxOmNomAngle) {
+		Vector2 targetDir = other.transform.position - gameObject.transform.position;
+		Vector2 forward = transform.up;
+		float angle = Vector2.Angle (targetDir, forward);
+		if (angle < OmNomAngle) {
 			Destroy (other.gameObject);
-			if (other.gameObject.name == "Asteroid(Clone)") {
-				asteroidCargo += 1;
-			} else if (other.gameObject.name == "enemyFightClone") {
-				enemyFighterCargo += 1;
+			if (other.gameObject.name == "Asteroid(Clone)" || other.gameObject.name == "enemyFightClone") {
+				cargo.AddFirst (other.gameObject);
 			}
-
+		} else if (angle > (OmNomAngle + 5)) {
+			Destroy (other.gameObject);
+			hitspot = other.contacts [0].point;
+			Instantiate (explosionspawn, hitspot, Quaternion.identity);
+			//hull damage will go here!
 		}
-
 	}
 	// Use this for initialization
 	void Start ()
 	{
-	
+		cargo = new LinkedList<GameObject> ();
 	}
 	
 	// Update is called once per frame

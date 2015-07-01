@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d5bb49b2c242f4ebcc19f910341314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
   destructionThreshold: 40
 --- !u!212 &21263916
 SpriteRenderer:
