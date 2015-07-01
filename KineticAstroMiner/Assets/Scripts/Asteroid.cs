@@ -28,8 +28,9 @@ public class Asteroid : MonoBehaviour
 	{
 		// If the Asteroid is too far away from the camera
 		Vector2 camDist = Camera.main.transform.position;
+		float camSize = Camera.main.orthographicSize;
 		Vector2 thisDist = gameObject.transform.position;
-		if ((thisDist - camDist).sqrMagnitude > 400) {
+		if ((thisDist - camDist).sqrMagnitude > camSize * camSize * 9) {
 			Destroy (gameObject);
 		}
 	}
