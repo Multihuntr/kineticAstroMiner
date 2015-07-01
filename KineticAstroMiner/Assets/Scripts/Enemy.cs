@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ILaserable
 {
 	enum State
 	{
@@ -91,7 +91,6 @@ public class Enemy : MonoBehaviour
 			float scale = Mathf.Lerp (0.05f, 0.005f, charged / chargeTime);
 			line.SetWidth (scale, scale);
 
-
 			if (charged >= chargeTime) {
 				// I am fully charged!
 				firing = 0;
@@ -102,6 +101,12 @@ public class Enemy : MonoBehaviour
 		case State.Firing:
 			// Imma firin' ma lazor
 			firing += Time.fixedDeltaTime;
+			if (hits != null && hits.Length > 1 && hits [1].transform != null) {
+				ILaserable target = hits [1].transform.GetComponent<ILaserable> ();
+				if (target != null) {
+					target.lasered ();
+				}
+			}
 			if (firing >= firingTime) {
 				recharge = 0;
 				state = State.Recharging;
@@ -136,7 +141,8 @@ public class Enemy : MonoBehaviour
 		instantlyFacePoint (aimAt);
 	}
 
-	void toLockOn (Transform t)
+	public void lasered ()
 	{
+		Debug.Log ("An enemy lasered another enemy");
 	}
 }

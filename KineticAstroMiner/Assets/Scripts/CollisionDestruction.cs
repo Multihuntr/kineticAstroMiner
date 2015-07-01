@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CollisionDestruction : MonoBehaviour
+public class CollisionDestruction : MonoBehaviour, ILaserable
 {
 	public GameObject explosionspawn;
 	public int destructionThreshold;
@@ -16,5 +16,10 @@ public class CollisionDestruction : MonoBehaviour
 			Destroy (gameObject);
 			Instantiate (explosionspawn, hitspot, Quaternion.identity);
 		}
+	}
+
+	public void lasered ()
+	{
+		Debug.Log ("An asteroid got lasered");
 	}
 }
