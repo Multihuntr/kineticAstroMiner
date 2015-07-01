@@ -87,7 +87,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &176179644 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 157092, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
@@ -109,7 +108,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-=======
 --- !u!1 &704317114
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +162,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fdfa515c7aba7764cac9a8187c82f90c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> origin/master
 --- !u!1001 &869692228
 Prefab:
   m_ObjectHideFlags: 0
@@ -332,8 +329,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1915d8fc680b3a641bc8c5a2a7e85ae0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
+  m_EditorClassIdentifier:
   maxSpd: 12
   snapdistance: .0199999996
   driftSpd: 1
@@ -350,12 +346,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
   OmNomAngle: 45
-=======
   LinSpd: 100
   DecelerationProximityThresholdFactor: 10
   RotSpd: 40000
   RotSlow: 8
->>>>>>> origin/master
 --- !u!1 &1969249388
 GameObject:
   m_ObjectHideFlags: 0
