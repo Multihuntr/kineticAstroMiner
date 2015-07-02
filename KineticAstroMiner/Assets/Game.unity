@@ -180,6 +180,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11444886, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484782, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
+      propertyPath: spawnTimeMax
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a84acad9da879d44a3fa340bf5ad66e, type: 2}
   m_IsPrefabParent: 0
