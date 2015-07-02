@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : Cargo
 {
 	public float minPush;
 	public float maxPush;
 	public float minRot;
 	public float maxRot;
 
-	Rigidbody2D rb;
 	Vector2 aimAt;
 
 	void Start ()
 	{
 		// Easy reference to the RigidBody
-		rb = GetComponent<Rigidbody2D> ();
+		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 
 		// Apply a random force and rotation, and let it free.
 		Vector2 twoDPos = gameObject.transform.position;
@@ -38,5 +37,10 @@ public class Asteroid : MonoBehaviour
 	void startAimedAt (Vector2 aimAt)
 	{
 		this.aimAt = aimAt;
+	}
+
+	public override void youAreEaten ()
+	{
+		addToHold ();
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour, ILaserable
+public class Enemy : Cargo, ILaserable
 {
 	enum State
 	{
@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour, ILaserable
 		Targeting,
 		Charging,
 		Firing,
-		Recharging}
+		Recharging,
+		Nothing}
 	;
 
 	public float LinSpd;
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour, ILaserable
 	void FixedUpdate ()
 	{
 		RaycastHit2D[] hits = null;
-		if (state != State.Launching && state != State.Recharging) {
+		if (state == State.Targeting || state == State.Charging || state == State.Firing) {
 			// Aim a raycast from the current position at the latest recorded relative position of the player
 			// If it's in Charging or Firing, then that won't be the actual location of the player.
 			hits = Physics2D.RaycastAll (transform.position, aimAt - (Vector2)transform.position);
@@ -144,5 +145,12 @@ public class Enemy : MonoBehaviour, ILaserable
 	public void lasered ()
 	{
 		Debug.Log ("An enemy lasered another enemy");
+	}
+
+	public override void youAreEaten ()
+	{
+		addToHold ();
+		line.SetPosition (1, Vector3.zero);
+		state = State.Nothing;
 	}
 }
