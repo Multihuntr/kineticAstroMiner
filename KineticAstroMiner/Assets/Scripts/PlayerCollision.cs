@@ -26,14 +26,12 @@ public class PlayerCollision : MonoBehaviour,ILaserable
 			GetComponent<Hull> ().damage (50);
 		}
 	}
-<<<<<<< HEAD
-
-=======
+	
 	public void lasered ()
 	{
 		GetComponent<Hull> ().damage (3);
 	}
->>>>>>> origin/master
+	
 	// Use this for initialization
 	void Start ()
 	{
