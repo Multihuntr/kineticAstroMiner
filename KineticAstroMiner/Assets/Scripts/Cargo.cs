@@ -17,12 +17,39 @@ public abstract class Cargo : MonoBehaviour
 		hold = new List<GameObject> ();
 	}
 
+	public static bool remove (GameObject item)
+	{
+		return hold.Remove (item);
+	}
+
+	public static GameObject loadTheCannon ()
+	{
+		// Get the last thing to enter the hold
+		GameObject shot = hold [hold.Count - 1];
+		// Re-enable Physics
+		shot.GetComponent<Rigidbody2D> ().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+		shot.GetComponent<CircleCollider2D> ().enabled = true;
+		// Re-Adjust size
+		shot.transform.localScale += new Vector3 (0.7f, 0.7f, 0);
+		// Remove it from the list
+		hold.Remove (shot);
+		// Plug your ears
+		return shot;
+	}
+
+	public static bool some ()
+	{
+		return (hold.Count > 0);
+	}
+
 	void stripPhysicsInteractions ()
 	{
 		// Disable interactions
 		Rigidbody2D rb = GetComponent<Rigidbody2D> ();
 		rb.collisionDetectionMode = CollisionDetectionMode2D.None;
 		rb.angularVelocity = 15;
+		// Prepare to be launched, sucka
+		rb.drag = 0;
 		rb.angularDrag = 0;
 		rb.velocity = Vector2.zero;
 		GetComponent<CircleCollider2D> ().enabled = false;

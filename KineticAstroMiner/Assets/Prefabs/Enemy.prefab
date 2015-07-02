@@ -79,6 +79,7 @@ GameObject:
   - 50: {fileID: 5070126}
   - 58: {fileID: 5831150}
   - 120: {fileID: 12058318}
+  - 114: {fileID: 11449272}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -293,6 +294,21 @@ MonoBehaviour:
   chargeTime: 1
   firingTime: .5
   rechargeTime: 1
+--- !u!114 &11449272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d5bb49b2c242f4ebcc19f910341314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
+  resource: {fileID: 0}
+  destructionThreshold: 20
+  laserHitMax: 20
 --- !u!120 &12058318
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -12,12 +12,14 @@ public class PlayerCollision : MonoBehaviour,ILaserable
 		Vector2 targetDir = other.transform.position - gameObject.transform.position;
 		Vector2 forward = transform.up;
 		float angle = Vector2.Angle (targetDir, forward);
-		if (angle < OmNomAngle) {
+		if (other.gameObject.name == "Resource(Clone)") {
+			GetComponent<Hull> ().repair (150);
+			Score.addScore (2500);
+			Destroy (other.gameObject);
+		} else if (angle < OmNomAngle) {
 			Cargo cargo = other.gameObject.GetComponent<Cargo> ();
 			if (cargo != null) {
 				cargo.youAreEaten ();
-			} else if (other.gameObject.name == "Resource(Clone)") {
-				GetComponent<Hull> ().repair (150);
 			}
 		} else if (angle > (OmNomAngle + 5)) {
 			Destroy (other.gameObject);
@@ -30,16 +32,5 @@ public class PlayerCollision : MonoBehaviour,ILaserable
 	public void lasered ()
 	{
 		GetComponent<Hull> ().damage (3);
-	}
-	
-	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
 	}
 }

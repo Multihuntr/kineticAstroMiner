@@ -11,6 +11,11 @@ public class CollisionDestruction : MonoBehaviour, ILaserable
 	private Vector2 hitspot;
 	private float lasercount = 0;
 
+	void OnDestroy ()
+	{
+		Cargo.remove (gameObject);
+	}
+
 	void OnCollisionEnter2D (Collision2D other)
 	{
 		Rigidbody2D rigbody = GetComponent<Rigidbody2D> ();

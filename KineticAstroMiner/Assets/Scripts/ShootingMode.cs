@@ -44,9 +44,12 @@ public class ShootingMode : MonoBehaviour
 			toggleActivate ();
 		}
 		if (Active) {
-			Vector2 aimAt = Input.mousePosition;
-			instantlyFacePoint (Camera.main.ScreenToWorldPoint (aimAt));
+			instantlyFacePoint (Camera.main.ScreenToWorldPoint (Input.mousePosition));
+			if (Input.GetMouseButtonDown (0)) {
+				fire ();
+			}
 		}
+
 #endif
 
 
@@ -90,6 +93,26 @@ public class ShootingMode : MonoBehaviour
 		rb.angularVelocity = 0;
 	}
 
+	void fire ()
+	{
+		if (Cargo.some ()) {
+			// Get the shot and load the cannon
+			GameObject shot = Cargo.loadTheCannon ();
+
+			// Position it with the player
+			shot.transform.position = transform.position;
+
+			// Move it to the 'shotsFired' layer so that it doesn't collide with the player
+			shot.layer = 9;
+
+			// Find the launch direction in world space by translating the player objects 'up' vector
+			Vector2 launchDir = transform.up;
+
+			// FIRE!
+			shot.GetComponent<Rigidbody2D> ().AddForce (launchDir * 1000);
+		}
+	}
+
 	void instantlyFacePoint (Vector2 TargetPos)
 	{		
 		// Trig. stuff! Uses rise/run to calculate the inverse tan in 2 dimensions.
@@ -111,7 +134,6 @@ public class ShootingMode : MonoBehaviour
 			return orig - dif * rate;
 		}
 	}
-
 
 
 }

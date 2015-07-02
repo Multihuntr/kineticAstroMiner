@@ -27,7 +27,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456044}
-  - 212: {fileID: 21213008}
+  - 212: {fileID: 21263916}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459a44fcb8cde334580b02283da7bc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPush: 3
-  maxPush: 6
+  minPush: 10
+  maxPush: 20
   minRot: -20
   maxRot: 20
 --- !u!114 &11473502
@@ -117,9 +117,10 @@ MonoBehaviour:
   explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
   resource: {fileID: 199946, guid: 80d2d620277eecc43b0b67c791dadb8c, type: 2}
   destructionThreshold: 20
+  laserHitMax: 20
 --- !u!212 &21263916
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199414}
