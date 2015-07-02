@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Dust-Mote.svg"
+   inkscape:export-filename="C:\`My General Stuff\Coding\Unity\Kinetic Astro Miner\kineticAstroMiner\Drawings\Dust-Mote.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4138">
+      <stop
+         style="stop-color:#ff5823;stop-opacity:1;"
+         offset="0"
+         id="stop4140" />
+      <stop
+         style="stop-color:#ff5823;stop-opacity:0;"
+         offset="1"
+         id="stop4142" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4138"
+       id="radialGradient4144"
+       cx="7.9999995"
+       cy="1044.3622"
+       fx="7.9999995"
+       fy="1044.3622"
+       r="7.9999992"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1450032,-0.02252803,0.02208653,1.1225641,-24.226362,-127.82109)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="44.8"
+     inkscape:cx="4.1227372"
+     inkscape:cy="8.7563887"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke:url(#radialGradient4144);stroke-width:1.94903147;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:18;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.39215686"
+       id="path4136"
+       sodipodi:sides="28"
+       sodipodi:cx="7.999999"
+       sodipodi:cy="1044.3622"
+       sodipodi:r1="5.3584104"
+       sodipodi:r2="4.1795602"
+       sodipodi:arg1="0.78539816"
+       sodipodi:arg2="0.8975979"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 11.788967,1048.1512 -1.183055,-0.5213 0.244933,1.2694 -1.0374027,-0.7715 -0.043672,1.2921 -0.8397311,-0.9829 -0.330088,1.2499 -0.5999516,-1.1452 -0.5999516,1.1452 -0.3300881,-1.2499 -0.8397311,0.9829 -0.043673,-1.2921 -1.0374029,0.7715 0.244933,-1.2694 -1.1830551,0.5213 0.5212565,-1.1831 -1.269384,0.2449 0.7714421,-1.0374 -1.2920606,-0.044 0.9829444,-0.8398 -1.249948,-0.3301 1.1451577,-0.5999 -1.1451577,-0.6 1.249948,-0.3301 -0.9829444,-0.8397 1.2920606,-0.044 -0.7714421,-1.0374 1.269384,0.245 -0.5212566,-1.1831 1.1830552,0.5213 -0.2449331,-1.2694 1.037403,0.7714 0.043673,-1.292 0.8397311,0.9829 0.330088,-1.2499 0.5999516,1.1451 0.5999516,-1.1451 0.3300881,1.2499 0.8397311,-0.9829 0.043672,1.292 1.0374028,-0.7714 -0.244933,1.2694 1.183055,-0.5213 -0.521256,1.1831 1.269384,-0.245 -0.771442,1.0374 1.29206,0.044 -0.982944,0.8397 1.249948,0.3301 -1.145158,0.6 1.145158,0.5999 -1.249948,0.3301 0.982944,0.8398 -1.29206,0.044 0.771442,1.0374 -1.269384,-0.2449 z" />
+  </g>
+</svg>
