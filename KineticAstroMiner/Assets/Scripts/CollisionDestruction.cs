@@ -6,36 +6,38 @@ public class CollisionDestruction : MonoBehaviour, ILaserable
 	public GameObject explosionspawn;
 	public GameObject resource;
 	public int destructionThreshold;
+	public int laserHitMax;
+
 	private Vector2 hitspot;
-	private float lasercount;
-	//public GameObject resource;
+	private float lasercount = 0;
 
 	void OnCollisionEnter2D (Collision2D other)
 	{
 		Rigidbody2D rigbody = GetComponent<Rigidbody2D> ();
-		hitspot = other.contacts [0].point;
-		if (other.relativeVelocity.sqrMagnitude > destructionThreshold && other.gameObject.name == "Asteroid(Clone)") {
-			death ();
-			if (other.rigidbody.velocity.sqrMagnitude > rigbody.velocity.sqrMagnitude) {
+		if (other.relativeVelocity.sqrMagnitude > destructionThreshold && other.gameObject.name != "Player") {
+			hitspot = other.contacts [0].point;
+			death (hitspot);
+
+			if (other.gameObject.name == "Asteroid(Clone)" && gameObject.name == "Asteroid(Clone)" 
+				&& other.rigidbody.velocity.sqrMagnitude > rigbody.velocity.sqrMagnitude) {
+
 				Instantiate (resource, hitspot, Quaternion.identity);
 			}
 		}
 	}
-	void death ()
+
+	void death (Vector3 loc)
 	{
 		Destroy (gameObject);
-		Instantiate (explosionspawn, hitspot, Quaternion.identity);
+		Instantiate (explosionspawn, loc, Quaternion.identity);
 	}
+
 	public void lasered ()
 	{
 		lasercount += 1;
-		if (lasercount > 20) {
+		if (lasercount > laserHitMax) {
 			Destroy (gameObject);
-			death ();
+			death (transform.position);
 		}
-	}
-	void Start ()
-	{
-		lasercount = 0;	
 	}
 }

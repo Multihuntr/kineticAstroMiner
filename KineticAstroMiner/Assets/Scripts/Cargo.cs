@@ -12,6 +12,11 @@ public abstract class Cargo : MonoBehaviour
 		}
 	}
 
+	public static void empty ()
+	{
+		hold = new List<GameObject> ();
+	}
+
 	void stripPhysicsInteractions ()
 	{
 		// Disable interactions

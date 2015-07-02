@@ -44,8 +44,8 @@ public class Spawner : MonoBehaviour
 		GameObject spawned = Instantiate (toSpawn, pos, Quaternion.identity) as GameObject;
 		
 		// Pick random point in play area
-		float x = UnityEngine.Random.value;
-		float y = UnityEngine.Random.value;
+		float x = (float)UnityEngine.Random.Range (300, 700) / 1000;
+		float y = (float)UnityEngine.Random.Range (300, 700) / 1000;
 		Vector2 aimAt = Camera.main.ViewportToWorldPoint (new Vector2 (x, y));
 
 		spawned.SendMessage ("startAimedAt", aimAt);

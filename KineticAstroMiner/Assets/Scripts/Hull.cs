@@ -17,15 +17,11 @@ public class Hull : MonoBehaviour
 	}
 	public void repair (int repairvalue)
 	{
-		if (currenthealth < maxhealth) {
-			currenthealth += repairvalue;
-			if (currenthealth > maxhealth) {
-				currenthealth = maxhealth;
-			}
-		}
+		currenthealth = Mathf.Min (currenthealth + repairvalue, maxhealth);
 	}
 	void death ()
 	{
+		Cargo.empty ();
 		Application.LoadLevel (Application.loadedLevel);
 	}
 	void Start ()

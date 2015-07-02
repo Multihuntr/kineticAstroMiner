@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : Cargo, ILaserable
+public class Enemy : Cargo
 {
 	enum State
 	{
@@ -140,11 +140,6 @@ public class Enemy : Cargo, ILaserable
 		
 		ProximityThreshold = (aimAt - (Vector2)transform.position).sqrMagnitude / ProximityThresholdFactor;
 		instantlyFacePoint (aimAt);
-	}
-
-	public void lasered ()
-	{
-		//Debug.Log ("An enemy lasered another enemy");
 	}
 
 	public override void youAreEaten ()

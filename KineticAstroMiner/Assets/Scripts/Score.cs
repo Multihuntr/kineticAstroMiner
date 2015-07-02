@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
 		v = 0;
 	}
 
-	public void addScore (int add)
+	public static void addScore (int add)
 	{
 		v += add;
 	}
