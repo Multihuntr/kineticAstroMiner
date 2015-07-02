@@ -203,8 +203,9 @@ GameObject:
   - 50: {fileID: 1613912783}
   - 58: {fileID: 1613912782}
   - 114: {fileID: 1613912786}
-  - 114: {fileID: 1613912787}
   - 114: {fileID: 1613912788}
+  - 114: {fileID: 1613912787}
+  - 114: {fileID: 1613912789}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -318,6 +319,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
   OmNomAngle: 45
+--- !u!114 &1613912789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613912781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8800b4f6a4b33d47b6c6d397cf13414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hullskin: {fileID: 11400000, guid: 3d9f39dd5ef81a643bb45bb3a21a2328, type: 2}
+  maxhealth: 10000
 --- !u!1 &1969249388
 GameObject:
   m_ObjectHideFlags: 0

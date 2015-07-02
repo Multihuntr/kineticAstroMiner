@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerCollision : MonoBehaviour,ILaserable
 {
 	public GameObject explosionspawn;
 	public float OmNomAngle;
@@ -16,15 +16,24 @@ public class PlayerCollision : MonoBehaviour
 			Cargo cargo = other.gameObject.GetComponent<Cargo> ();
 			if (cargo != null) {
 				cargo.youAreEaten ();
+			} else if (other.gameObject.name == "Resource(Clone)") {
+				GetComponent<Hull> ().repair (150);
 			}
 		} else if (angle > (OmNomAngle + 5)) {
 			Destroy (other.gameObject);
 			hitspot = other.contacts [0].point;
 			Instantiate (explosionspawn, hitspot, Quaternion.identity);
-			//hull damage will go here!
+			GetComponent<Hull> ().damage (50);
 		}
 	}
+<<<<<<< HEAD
 
+=======
+	public void lasered ()
+	{
+		GetComponent<Hull> ().damage (3);
+	}
+>>>>>>> origin/master
 	// Use this for initialization
 	void Start ()
 	{

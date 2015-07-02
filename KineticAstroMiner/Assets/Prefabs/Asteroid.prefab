@@ -116,8 +116,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionspawn: {fileID: 142912, guid: ed377950bc95ce240a9e7823924973b5, type: 2}
   resource: {fileID: 199946, guid: 80d2d620277eecc43b0b67c791dadb8c, type: 2}
+<<<<<<< HEAD
   destructionThreshold: 40
 --- !u!212 &21213008
+=======
+  destructionThreshold: 20
+--- !u!212 &21263916
+>>>>>>> origin/master
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

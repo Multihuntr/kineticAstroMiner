@@ -144,7 +144,7 @@ public class Enemy : Cargo, ILaserable
 
 	public void lasered ()
 	{
-		Debug.Log ("An enemy lasered another enemy");
+		//Debug.Log ("An enemy lasered another enemy");
 	}
 
 	public override void youAreEaten ()
