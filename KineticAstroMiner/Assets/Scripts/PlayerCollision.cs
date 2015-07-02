@@ -17,14 +17,14 @@ public class PlayerCollision : MonoBehaviour,ILaserable
 			Destroy (other.gameObject);
 			if (other.gameObject.name == "Asteroid(Clone)" || other.gameObject.name == "enemyFightClone") {
 				cargo.AddFirst (other.gameObject);
-			} else if (other.gameObject.name == "Resource") {
-				GetComponent<Hull> ().repair ();
+			} else {
+				GetComponent<Hull> ().repair (150);
 			}
 		} else if (angle > (OmNomAngle + 5)) {
 			Destroy (other.gameObject);
 			hitspot = other.contacts [0].point;
 			Instantiate (explosionspawn, hitspot, Quaternion.identity);
-			GetComponent<Hull> ().damage (10);
+			GetComponent<Hull> ().damage (50);
 		}
 	}
 	public void lasered ()

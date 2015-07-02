@@ -143,6 +143,6 @@ public class Enemy : MonoBehaviour, ILaserable
 
 	public void lasered ()
 	{
-		Debug.Log ("An enemy lasered another enemy");
+		//Debug.Log ("An enemy lasered another enemy");
 	}
 }

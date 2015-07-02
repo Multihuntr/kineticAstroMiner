@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8800b4f6a4b33d47b6c6d397cf13414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hullskin: {fileID: 11400000, guid: 3d9f39dd5ef81a643bb45bb3a21a2328, type: 2}
   maxhealth: 10000
 --- !u!1 &1969249388
 GameObject:
