@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerCollision : MonoBehaviour,ILaserable
 {
 	public GameObject explosionspawn;
 	public float OmNomAngle;
@@ -17,13 +17,19 @@ public class PlayerCollision : MonoBehaviour
 			Destroy (other.gameObject);
 			if (other.gameObject.name == "Asteroid(Clone)" || other.gameObject.name == "enemyFightClone") {
 				cargo.AddFirst (other.gameObject);
+			} else if (other.gameObject.name == "Resource") {
+				GetComponent<Hull> ().repair ();
 			}
 		} else if (angle > (OmNomAngle + 5)) {
 			Destroy (other.gameObject);
 			hitspot = other.contacts [0].point;
 			Instantiate (explosionspawn, hitspot, Quaternion.identity);
-			//hull damage will go here!
+			GetComponent<Hull> ().damage (10);
 		}
+	}
+	public void lasered ()
+	{
+		GetComponent<Hull> ().damage (3);
 	}
 	// Use this for initialization
 	void Start ()
