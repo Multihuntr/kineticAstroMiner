@@ -1392,6 +1392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a1dd4f780cbf244beaa94af7728762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ambient: {fileID: 1969249389}
 --- !u!114 &1613912787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1444,7 @@ GameObject:
   - 4: {fileID: 1969249390}
   - 108: {fileID: 1969249389}
   m_Layer: 0
-  m_Name: Directional light
+  m_Name: AmbientLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

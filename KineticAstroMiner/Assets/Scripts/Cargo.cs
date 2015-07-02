@@ -7,6 +7,8 @@ public abstract class Cargo : MonoBehaviour
 
 	public Cargo ()
 	{
+		// Every time an object spawns, it will check if the hold is empty.
+		//	This could be improved with some restructuring.
 		if (hold == null) {
 			hold = new List<GameObject> ();
 		}
@@ -19,7 +21,9 @@ public abstract class Cargo : MonoBehaviour
 
 	public static bool remove (GameObject item)
 	{
-		return hold.Remove (item);
+		bool result = hold.Remove (item);
+		rejigPositions ();
+		return result;
 	}
 
 	public static GameObject loadTheCannon ()
@@ -41,6 +45,14 @@ public abstract class Cargo : MonoBehaviour
 	{
 		return (hold.Count > 0);
 	}
+	
+	static void rejigPositions ()
+	{
+		for (int i = 0; i < hold.Count; ++i) {
+			Vector2 xy = Camera.main.ViewportToWorldPoint (new Vector2 (1 - (float)i / hold.Count / 3 - 0.02f, 0.05f));
+			hold [i].transform.position = new Vector3 (xy.x, xy.y, 5);
+		}
+	}
 
 	void stripPhysicsInteractions ()
 	{
@@ -61,14 +73,6 @@ public abstract class Cargo : MonoBehaviour
 		gameObject.transform.localScale -= new Vector3 (0.7f, 0.7f, 0);
 		hold.Add (gameObject);
 		rejigPositions ();
-	}
-
-	void rejigPositions ()
-	{
-		for (int i = 0; i < hold.Count; ++i) {
-			Vector2 xy = Camera.main.ViewportToWorldPoint (new Vector2 (1 - (float)i / hold.Count / 3 - 0.02f, 0.05f));
-			hold [i].transform.position = new Vector3 (xy.x, xy.y, 5);
-		}
 	}
 
 	public abstract void youAreEaten ();

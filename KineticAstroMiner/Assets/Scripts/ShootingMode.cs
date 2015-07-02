@@ -7,6 +7,9 @@ using System.Linq;
 public class ShootingMode : MonoBehaviour
 {
 	public static bool Active = false;
+
+	public Light ambient;
+
 	private float TimeScaleTarget = 1;
 	private Rigidbody2D rb;
 
@@ -54,6 +57,7 @@ public class ShootingMode : MonoBehaviour
 
 
 		Time.timeScale = towards (Time.timeScale, TimeScaleTarget);
+		ambient.intensity = towards (ambient.intensity, 1 + 7 * (1 - TimeScaleTarget));
 	}
 
 	
@@ -110,6 +114,7 @@ public class ShootingMode : MonoBehaviour
 
 			// FIRE!
 			shot.GetComponent<Rigidbody2D> ().AddForce (launchDir * 1000);
+			rb.AddForce (-launchDir * 100);
 		}
 	}
 
@@ -125,10 +130,10 @@ public class ShootingMode : MonoBehaviour
 		rb.rotation = angle;
 	}
 	
-	private float towards (float orig, float target, float scale = 1, float rate = 0.1f)
+	private float towards (float orig, float target, float rate = 0.1f, float snap = 0.05f)
 	{
 		float dif = orig - target;
-		if (Mathf.Abs (dif) < 0.05 * scale) {
+		if (Mathf.Abs (dif) < snap) {
 			return target;
 		} else {
 			return orig - dif * rate;
