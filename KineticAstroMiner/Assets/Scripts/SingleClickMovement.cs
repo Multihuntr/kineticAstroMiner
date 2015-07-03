@@ -32,7 +32,6 @@ public class SingleClickMovement : MonoBehaviour
 		bool closeEnough;
 		// Using dif/abDif gives you a +1 or -1 which you multiply by the acceleration variable
 		int dir = (int)(dif / abDif);
-		//Debug.Log (dir);
 		// If the difference is more than 180 degrees, then the shortest difference would be to go the other way
 		if (abDif > 180) {
 			closeEnough = Mathf.Abs (360 - dif) < RotSlow;
@@ -72,6 +71,9 @@ public class SingleClickMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Game.Paused) {
+			return;
+		}
 		// Check if the player has clicked
 		Vector2 CurrentPosition = transform.position;
 		Vector2 MousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -85,6 +87,9 @@ public class SingleClickMovement : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		if (Game.Paused) {
+			return;
+		}
 		// Handle movement
 		if (launching && !ShootingMode.Active) {
 			//First we check if we should be rotating to face the correct position.

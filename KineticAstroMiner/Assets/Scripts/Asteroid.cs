@@ -25,6 +25,9 @@ public class Asteroid : Cargo
 
 	void Update ()
 	{
+		if (Game.Paused) {
+			return;
+		}
 		// If the Asteroid is too far away from the camera
 		Vector2 camDist = Camera.main.transform.position;
 		float camSize = Camera.main.orthographicSize;
@@ -32,6 +35,7 @@ public class Asteroid : Cargo
 		if ((thisDist - camDist).sqrMagnitude > camSize * camSize * 9) {
 			Destroy (gameObject);
 		}
+
 	}
 
 	void startAimedAt (Vector2 aimAt)

@@ -39,6 +39,9 @@ public class Enemy : Cargo
 
 	void FixedUpdate ()
 	{
+		if (Game.Paused) {
+			return;
+		}
 		RaycastHit2D[] hits = null;
 		if (state == State.Targeting || state == State.Charging || state == State.Firing) {
 			// Aim a raycast from the current position at the latest recorded relative position of the player

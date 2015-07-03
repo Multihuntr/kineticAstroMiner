@@ -20,7 +20,9 @@ public class Score : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		v++;
+		if (!Game.Paused) {
+			v++;
+		}
 	}
 
 	void OnGUI ()

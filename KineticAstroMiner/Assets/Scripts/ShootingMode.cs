@@ -25,23 +25,25 @@ public class ShootingMode : MonoBehaviour
 
 	void Update ()
 	{
-
-#if UNITY_IOS || UNITY_ANDROID
-		if (!Active) {
-			if (checkTouchOnPlayer (TouchPhase.Began)) {
-				activate ();
-			}
-		} else {
-			Touch? touch = Input.touches.First (t => t.phase == TouchPhase.Moved);
-			Vector2 aimAt = touch.Value.position;
-
-			instantlyFacePoint (Camera.main.ScreenToWorldPoint (aimAt));
-			
-				// Should leave if there is a touch end on the player object
-			if (checkTouchOnPlayer (TouchPhase.Ended)) {
-				deactivate ();
-			}
+		if (Game.Paused) {
+			return;
 		}
+#if UNITY_IOS || UNITY_ANDROID
+			if (!Active) {
+				if (checkTouchOnPlayer (TouchPhase.Began)) {
+					activate ();
+				}
+			} else {
+				Touch? touch = Input.touches.First (t => t.phase == TouchPhase.Moved);
+				Vector2 aimAt = touch.Value.position;
+
+				instantlyFacePoint (Camera.main.ScreenToWorldPoint (aimAt));
+				
+					// Should leave if there is a touch end on the player object
+				if (checkTouchOnPlayer (TouchPhase.Ended)) {
+					deactivate ();
+				}
+			}
 #else
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			toggleActivate ();
@@ -55,9 +57,9 @@ public class ShootingMode : MonoBehaviour
 
 #endif
 
-
 		Time.timeScale = towards (Time.timeScale, TimeScaleTarget);
 		ambient.intensity = towards (ambient.intensity, 1 + 7 * (1 - TimeScaleTarget));
+
 	}
 
 	
