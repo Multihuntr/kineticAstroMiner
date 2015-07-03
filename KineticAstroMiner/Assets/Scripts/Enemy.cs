@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : Cargo
 {
@@ -19,6 +19,7 @@ public class Enemy : Cargo
 	public float chargeTime;
 	public float firingTime;
 	public float rechargeTime;
+	public List<Color> laserColours;
 
 	private Vector2 aimAt;
 	private State state;
@@ -111,10 +112,16 @@ public class Enemy : Cargo
 					target.lasered ();
 				}
 			}
+
+			// With some pretty colors
+			Color picked = laserColours [Random.Range (0, laserColours.Count - 1)];
+			Debug.Log (picked);
+			line.SetColors (picked, picked);
 			if (firing >= firingTime) {
 				recharge = 0;
 				state = State.Recharging;
 				line.SetPosition (1, Vector3.zero);
+				line.SetColors (laserColours [0], laserColours [0]);
 			}
 			break;
 		case State.Recharging:

@@ -294,6 +294,12 @@ MonoBehaviour:
   chargeTime: 1
   firingTime: .5
   rechargeTime: 1
+  laserColours:
+  - {r: .309803933, g: 0, b: 0, a: 1}
+  - {r: .164143607, g: .485294104, b: .20622544, a: 1}
+  - {r: .168685094, g: .484071016, b: .588235259, a: 1}
+  - {r: .83088237, g: .670773149, b: .250486583, a: 1}
+  - {r: .168729812, g: .160575286, b: .397058845, a: 1}
 --- !u!114 &11449272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,7 +350,7 @@ LineRenderer:
       rgba: 4278190159
     m_EndColor:
       serializedVersion: 2
-      rgba: 4278848079
+      rgba: 4278190159
   m_UseWorldSpace: 0
 --- !u!212 &21237840
 SpriteRenderer:
