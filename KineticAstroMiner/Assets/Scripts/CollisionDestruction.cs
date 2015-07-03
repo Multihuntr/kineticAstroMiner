@@ -27,7 +27,9 @@ public class CollisionDestruction : MonoBehaviour, ILaserable
 			if (other.gameObject.name == "Asteroid(Clone)" && gameObject.name == "Asteroid(Clone)" 
 				&& other.rigidbody.velocity.sqrMagnitude > rigbody.velocity.sqrMagnitude) {
 
-				Instantiate (resource, hitspot, Quaternion.identity);
+				GameObject res = Instantiate (resource, hitspot, Quaternion.identity) as GameObject;
+				float randRot = Random.Range (-100, 100) / 1000f;
+				res.GetComponent<Rigidbody2D> ().AddTorque (randRot);
 			}
 		}
 	}

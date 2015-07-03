@@ -11,6 +11,7 @@ public class ShootingMode : MonoBehaviour
 	public Light ambient;
 
 	private float TimeScaleTarget = 1;
+	private float coverAlpha = 0;
 	private Rigidbody2D rb;
 
 #if UNITY_IOS || UNITY_ANDROID
@@ -58,8 +59,9 @@ public class ShootingMode : MonoBehaviour
 #endif
 
 		Time.timeScale = towards (Time.timeScale, TimeScaleTarget);
-		ambient.intensity = towards (ambient.intensity, 1 + 7 * (1 - TimeScaleTarget));
-
+		ambient.intensity = towards (ambient.intensity, 1 + 4 * (1 - TimeScaleTarget), 0.05f);
+		Debug.Log (coverAlpha);
+		coverAlpha = towards (coverAlpha, 2f * (1 - TimeScaleTarget), 0.05f);
 	}
 
 	
@@ -83,6 +85,14 @@ public class ShootingMode : MonoBehaviour
 			} else {
 				activate ();
 			}
+		}
+	}
+
+	void OnGUI ()
+	{
+		if (coverAlpha > 0.1f) {
+			GUI.backgroundColor = new Color (0, 0, 0, coverAlpha);
+			GUI.Box (new Rect (0, 0, Screen.width, Screen.height), "");
 		}
 	}
 
