@@ -24,6 +24,13 @@ public class Game : MonoBehaviour
 	{
 		pause ();
 	}
+	
+	void OnApplicationFocus (bool focus)
+	{
+		if (!focus) {
+			pause ();
+		}
+	}
 
 	void pause ()
 	{
@@ -43,6 +50,7 @@ public class Game : MonoBehaviour
 		if (Game.Paused) {
 			GUI.skin = guiSkin;
 			GUI.Box (new Rect (0, 0, Screen.width, Screen.height), "Paused");
+			GUI.Label (new Rect (Screen.width / 4, Screen.height / 2 + 40, Screen.width / 2, 100), "Click to move ship, Spacebar to toggle shoot mode, 'p', 'return', or 'esc' to pause/unpause");
 		}
 	}
 }
