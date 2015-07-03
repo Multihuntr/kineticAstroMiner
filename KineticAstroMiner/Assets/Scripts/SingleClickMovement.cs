@@ -20,19 +20,29 @@ public class SingleClickMovement : MonoBehaviour
 
 	//stuff that isnt variables starts here
 	bool rotation (Vector2 CurrentPosition)
-	{
+	{		
 		// Get the angles you need
-		float currAng = normaliseAngle (transform.eulerAngles.z);
-		float targetAng = normaliseAngle (Mathf.Atan2 (TargetPosition.y - CurrentPosition.y, TargetPosition.x - CurrentPosition.x) * Mathf.Rad2Deg - 90);
+		float currAng = unnormaliseAngle (transform.eulerAngles.z);
+		float targetAng = -Mathf.Atan2 (TargetPosition.x - CurrentPosition.x, TargetPosition.y - CurrentPosition.y) * Mathf.Rad2Deg;
 		// Compare them
 		float dif = targetAng - currAng;
 		float abDif = Mathf.Abs (dif);
-
+		
 		// Is it close enough to what you want?
-		bool closeEnough = abDif < RotSlow;
+		bool closeEnough;
+		// Using dif/abDif gives you a +1 or -1 which you multiply by the acceleration variable
+		int dir = (int)(dif / abDif);
+		//Debug.Log (dir);
+		// If the difference is more than 180 degrees, then the shortest difference would be to go the other way
+		if (abDif > 180) {
+			closeEnough = Mathf.Abs (360 - dif) < RotSlow;
+			dir = -dir;
+		} else {
+			closeEnough = abDif < RotSlow;
+		}
+
 		if (!closeEnough) {
-			// Using dif/abDif gives you a +1 or -1 which you multiply by the acceleration variable
-			rigBody.AddTorque (dif / abDif * RotSpd);
+			rigBody.AddTorque (dir * RotSpd);
 		} else {
 			// Snap it to the rotation you want. Hopefully no one will notice the snap!
 			rigBody.angularVelocity = 0;
@@ -43,10 +53,12 @@ public class SingleClickMovement : MonoBehaviour
 		return !closeEnough;
 	}
 
-	float normaliseAngle (float a)
+	float unnormaliseAngle (float a)
 	{
-		a += 360;
-		return a % 360;
+		if (a > 180) {
+			a -= 360;
+		}
+		return a;
 	}
 
 	// Use this for initialization
