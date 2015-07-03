@@ -36,7 +36,7 @@ public abstract class Cargo : MonoBehaviour
 		// Re-Adjust size
 		shot.transform.localScale += new Vector3 (0.7f, 0.7f, 0);
 		// Remove it from the list
-		hold.Remove (shot);
+		remove (shot);
 		// Plug your ears
 		return shot;
 	}

@@ -14,6 +14,9 @@ public class ExplosiveDespawn : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Game.Paused) {
+			return;
+		}
 		if (count < lifetime) {
 			count += 1;
 		} else {
