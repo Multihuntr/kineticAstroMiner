@@ -115,7 +115,6 @@ public class Enemy : Cargo
 
 			// With some pretty colors
 			Color picked = laserColours [Random.Range (0, laserColours.Count - 1)];
-			Debug.Log (picked);
 			line.SetColors (picked, picked);
 			if (firing >= firingTime) {
 				recharge = 0;

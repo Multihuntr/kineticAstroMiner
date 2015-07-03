@@ -20,7 +20,7 @@ public class SingleClickMovement : MonoBehaviour
 
 	//stuff that isnt variables starts here
 	bool rotation (Vector2 CurrentPosition)
-	{		
+	{
 		// Get the angles you need
 		float currAng = unnormaliseAngle (transform.eulerAngles.z);
 		float targetAng = -Mathf.Atan2 (TargetPosition.x - CurrentPosition.x, TargetPosition.y - CurrentPosition.y) * Mathf.Rad2Deg;
@@ -34,7 +34,7 @@ public class SingleClickMovement : MonoBehaviour
 		int dir = (int)(dif / abDif);
 		// If the difference is more than 180 degrees, then the shortest difference would be to go the other way
 		if (abDif > 180) {
-			closeEnough = Mathf.Abs (360 - dif) < RotSlow;
+			closeEnough = Mathf.Abs (360 - abDif) < RotSlow;
 			dir = -dir;
 		} else {
 			closeEnough = abDif < RotSlow;
