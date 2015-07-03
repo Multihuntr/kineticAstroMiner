@@ -22,6 +22,7 @@ public class CollisionDestruction : MonoBehaviour, ILaserable
 		if (other.relativeVelocity.sqrMagnitude > destructionThreshold && other.gameObject.name != "Player") {
 			hitspot = other.contacts [0].point;
 			death (hitspot);
+			CameraShake.go (10);
 
 			if (other.gameObject.name == "Asteroid(Clone)" && gameObject.name == "Asteroid(Clone)" 
 				&& other.rigidbody.velocity.sqrMagnitude > rigbody.velocity.sqrMagnitude) {

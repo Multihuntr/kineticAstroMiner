@@ -10,6 +10,7 @@ public class Hull : MonoBehaviour
 	// Use this for initialization
 	public void damage (int attackvalue)
 	{
+		CameraShake.go (attackvalue);
 		currenthealth -= attackvalue;
 		if (currenthealth < 1) {
 			death ();
