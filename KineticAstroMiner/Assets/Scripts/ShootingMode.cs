@@ -60,7 +60,6 @@ public class ShootingMode : MonoBehaviour
 
 		Time.timeScale = towards (Time.timeScale, TimeScaleTarget);
 		ambient.intensity = towards (ambient.intensity, 1 + 4 * (1 - TimeScaleTarget), 0.05f);
-		Debug.Log (coverAlpha);
 		coverAlpha = towards (coverAlpha, 2f * (1 - TimeScaleTarget), 0.05f);
 	}
 
